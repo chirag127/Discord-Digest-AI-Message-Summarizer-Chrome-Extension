@@ -37,7 +37,7 @@
     * **State:** **Signals** (Standardized).
     * **Lint/Test:** **Biome** (Speed) + **Vitest** (Unit) + **Playwright** (E2E).
 * **SCENARIO B: SYSTEMS / PERFORMANCE (Rust/Go)**
-    * **Stack:** **Rust 1.8x** (Cargo) or **Go 1.2x).
+    * **Stack:** **Rust 1.8x** (Cargo) or **Go 1.2x**.
     * **Lint:** **Clippy** / **GolangCI-Lint**.
 * **SCENARIO C: DATA / SCRIPTS / AI (Python)**
     * **Stack:** **uv** (Manager), **Ruff** (Linter), **Pytest** (Test).
@@ -140,7 +140,7 @@
 
 ## 11. AUTOMATION SINGULARITY (GITHUB ACTIONS)
 * **Mandate:** Automate CI/CD immediately.
-* **Workflows:**
+* **Workflows:** 
     1.  **Integrity:** Lint + Test on Push.
     2.  **Security:** Audit dependencies + SBOM.
     3.  **Release:** Semantic Versioning + Artifact Upload.
