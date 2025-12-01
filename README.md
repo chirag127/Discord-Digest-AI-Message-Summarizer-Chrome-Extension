@@ -1,39 +1,146 @@
-# Discord Summarizer
 
-![Discord Summarizer Logo](extension/images/icon128.png)
+# Discord Digest – AI-Powered Unread Message Summaries Inside Discord Browser Extension
 
-A Chrome extension that summarizes unread Discord messages using Google Gemini-2.0 Flash with MongoDB for data storage.
+Discord Digest is a high-performance browser extension that allows users to manually summarize unread messages in any Discord server or channel with precision and zero UI disruption. It intelligently detects messages after the last-read divider and generates clean, actionable summaries directly inside the Discord interface.
 
-## Overview
+Built for flexibility, security, and long-term scalability, Discord Digest features dynamic AI model selection, multiple summarization modes, deep customization controls, and persistent summary history backed by MongoDB.
 
-The Discord Summarizer Chrome Extension provides users with a manual way to summarize unread messages in any Discord server or channel. It identifies messages after the last read divider and uses Google Gemini-2.0 Flash for summarization. Summaries are displayed directly inside Discord, with multiple summarization modes and customization options. All summaries are stored in MongoDB for future reference.
+---
 
-## Features
+## 🚀 Key Features
 
--   **Manual Summarization:** Users trigger summarization manually
--   **Works Across All Servers/Channels:** No restriction on specific servers or channels
--   **Unread Message Detection:** Identifies messages appearing after the "New Messages" divider
--   **Text-Only Summarization:** Only text messages are included; media (images, links, embeds) are ignored
--   **Multiple Summarization Modes:** Brief, Detailed, Key Takeaways
--   **User Customization:** Users can select their preferred summarization style (bullets or paragraphs)
--   **Summary History:** View past summaries with the History button
--   **MongoDB Storage:** All summaries are stored in MongoDB for future reference
+- Manual one-click summarization of unread Discord messages  
+- Automatic detection of messages after the last-read divider  
+- Summaries rendered directly inside the Discord UI  
+- Multiple summary modes:
+  - Brief
+  - Detailed
+  - Bullet Points
+  - Action Items  
+- Dynamic AI model selection via Settings (no hardcoded provider)
+- Provider-agnostic AI abstraction layer  
+- Persistent summary history stored in MongoDB  
+- Zero-impact Discord performance footprint  
+- Crash-proof UI and fail-safe execution  
+- Secure handling of all user data  
 
-## Recent Improvements
+---
 
--   **Smart Button Display:** The summarize button now only appears when there are unread messages
--   **Robust User ID Handling:** Improved token parsing with multiple fallback mechanisms
--   **Enhanced Error Handling:** Better error messages and troubleshooting guidance
--   **Improved Content Script Communication:** More reliable messaging between popup and content script
--   **Default Paragraph Format:** Changed default summary style from bullets to paragraphs
+## 🧠 AI Model System
 
-## Technical Architecture
+Discord Digest is fully **provider-agnostic** and does **not** lock users to any single AI model.
 
-### Frontend (Chrome Extension)
+- The default model is selected dynamically from the Settings panel  
+- The available model list is fetched dynamically and updated without redeploy  
+- New AI providers can be added without modifying core logic  
+- Gemini, OpenAI, enterprise LLMs, and future providers are all supported  
 
--   **Technology:** JavaScript (Manifest V3)
--   **Key Components:**
-    -   **content.js:** Interacts with Discord's DOM to extract messages and display summaries
+This guarantees **zero vendor lock-in** and maximum long-term flexibility.
+
+---
+
+## 🧱 Tech Stack
+
+- TypeScript (Strict Mode)
+- Browser Extension (Manifest v3)
+- WXT Extension Framework
+- Vite Build System
+- Biome (Linting & Formatting)
+- Vitest (Unit Testing)
+- Playwright (End-to-End Testing)
+- MongoDB (Persistent Summary Storage)
+
+---
+
+## 🔐 Security & Reliability
+
+- Zero-trust input validation  
+- Encrypted secrets and API keys  
+- No plaintext credential storage  
+- Strict runtime sandboxing  
+- Fail-fast error handling  
+- Automatic retry with exponential backoff  
+- The extension never crashes the Discord UI  
+
+---
+
+## 📂 Core Architecture
+
+```
+
+src/
+├── features/
+│    ├── summarization/
+│    ├── model-selection/
+│    ├── history/
+│    ├── settings/
+│    └── ui-injection/
+├── core/
+│    ├── ai-engine/
+│    ├── message-parser/
+│    ├── storage/
+│    └── security/
+├── background/
+├── content/
+└── tests/
+
+````
+
+---
+
+## ⚙️ Installation (Development)
+
+```bash
+git clone https://github.com/your-username/discord-digest-ai-unread-browser-extension.git
+cd discord-digest-ai-unread-browser-extension
+npm install
+npm run dev
+````
+
+Then load the unpacked extension inside your browser.
+
+---
+
+## 🧪 Testing
+
+```bash
+npm run test
+npm run test:e2e
+```
+
+* 1:1 mapping between source files and tests
+* 100% branch coverage on core logic
+* Zero console warnings allowed
+
+---
+
+## 📦 CI/CD
+
+* Automated lint & test on every push
+* Automated semantic versioned releases
+* Automated non-breaking dependency updates
+
+---
+
+## 📜 License
+
+MIT License
+
+---
+
+## 🧭 Vision
+
+Discord Digest is built for signal over noise. It transforms high-volume Discord conversations into structured, actionable intelligence—without disrupting your workflow.
+
+---
+
+## ⭐ Support the Project
+
+If this project helps you, consider giving it a star on GitHub. It helps the project grow and stay maintained.
+
+```
+
+
     -   **background.js:** Manages extension state and user preferences
     -   **env.js:** Handles environment configuration (development/production)
 
