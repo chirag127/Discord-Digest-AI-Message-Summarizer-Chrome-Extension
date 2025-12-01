@@ -1,30 +1,61 @@
 # Node.js
-node_modules/
+/node_modules
+.pnp
+.pnp.cjs
+.pnp.loader.mjs
 
 # Build artifacts
-dist/
-build/
-.cache/
+/dist
+/build
+/out
 
-# IDE / Editor
-.idea/
-.vscode/
-*.swp
-*.swo
-*.bak
-*.tmp
+# Vite-specific files
+/.vite
 
-# System Files
-.DS_Store
+# Dependency management
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
 
 # Logs
 *.log
-*.err
-*.out
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# macOS
-.AppleDouble
-.LSOverride
+# Test coverage
+/coverage
+/playwright-report
+/test-results
 
-# Chrome Extension Specific
-.crx
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+.babelrc.json.bak
+.npmrc
+
+# TypeScript cache
+*.tsbuildinfo
+
+# WXT extension build output (if different from dist)
+.wxt/
