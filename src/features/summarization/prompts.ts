@@ -7,34 +7,53 @@ export interface PromptOptions {
 }
 
 export const createPrompt = (messages: string, options: PromptOptions): string => {
-  let prompt = `Summarize the following Discord conversation:\n\n${messages}\n\n`;
+  const baseInstruction = `You are a world-class executive assistant and technical summarizer. Your goal is to distill the following Discord conversation into a pristine, actionable summary.`;
 
-  // Add mode-specific instructions
+  let modeInstruction = "";
   switch (options.mode) {
     case "brief":
-      prompt +=
-        "Provide a brief summary that captures the main points of the conversation. Keep it concise and to the point. ";
+      modeInstruction = `
+### **MODE: EXECUTIVE BRIEF**
+- **Goal:** Provide a high-level overview in < 3 sentences.
+- **Focus:** The "What" and "Why". Ignore minor details.
+- **Output:** A single paragraph or short bullet list.
+`;
       break;
     case "detailed":
-      prompt +=
-        "Provide a detailed summary of the conversation, including all important points discussed. Make sure to capture the flow of the conversation and any decisions or conclusions reached. ";
+      modeInstruction = `
+### **MODE: DEEP DIVE**
+- **Goal:** A comprehensive chronicle of the discussion.
+- **Focus:** Context, debate points, decisions, and future implications.
+- **Output:** Structured sections with clear headers.
+`;
       break;
     case "key_takeaways":
-      prompt +=
-        "Extract the key takeaways from this conversation. Focus on actionable items, decisions made, and important information shared. ";
+      modeInstruction = `
+### **MODE: ACTION ITEMS**
+- **Goal:** Extract tasks, decisions, and deadlines.
+- **Focus:** "Who", "What", "When".
+- **Output:** A strict Markdown Table with columns: **Task**, **Owner**, **Status/Deadline**.
+`;
       break;
-    default:
-      prompt += "Provide a concise summary of the main points. ";
   }
 
-  // Add style-specific instructions
-  if (options.style === "bullets") {
-    prompt += "Format the summary as bullet points. ";
-  } else {
-    prompt += "Format the summary as paragraphs. ";
-  }
+  const formatInstruction = `
+### **FORMATTING RULES**
+- **Markdown Only:** Use **bold** for importance, \`code\` for technical terms.
+- **No Fluff:** Do not use phrases like "Here is the summary" or "In this chat".
+- **Chain of Thought:** Before summarizing, mentally map the conversation flow to ensure temporal accuracy.
+- **Style:** ${options.style === "bullets" ? "Use strict bullet points." : "Use well-structured paragraphs."}
+`;
 
-  prompt += "Do not include any conversational filler. Just the summary.";
+  return `${baseInstruction}
 
-  return prompt;
+${modeInstruction}
+
+${formatInstruction}
+
+### **INPUT CONVERSATION**
+${messages}
+
+### **OUTPUT**
+`;
 };

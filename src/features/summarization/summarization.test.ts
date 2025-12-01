@@ -6,19 +6,19 @@ describe("Summarization Logic", () => {
 
   it("should create brief prompt correctly", () => {
     const prompt = createPrompt(sampleMessages, { mode: "brief", style: "bullets" });
-    expect(prompt).toContain("brief summary");
-    expect(prompt).toContain("bullet points");
+    expect(prompt).toContain("EXECUTIVE BRIEF");
+    expect(prompt).toContain("strict bullet points");
     expect(prompt).toContain(sampleMessages);
   });
 
   it("should create detailed prompt correctly", () => {
     const prompt = createPrompt(sampleMessages, { mode: "detailed", style: "paragraphs" });
-    expect(prompt).toContain("detailed summary");
-    expect(prompt).toContain("paragraphs");
+    expect(prompt).toContain("DEEP DIVE");
+    expect(prompt).toContain("well-structured paragraphs");
   });
 
   it("should create key takeaways prompt correctly", () => {
     const prompt = createPrompt(sampleMessages, { mode: "key_takeaways", style: "bullets" });
-    expect(prompt).toContain("key takeaways");
+    expect(prompt).toContain("ACTION ITEMS");
   });
 });
