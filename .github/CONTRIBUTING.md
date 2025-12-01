@@ -1,91 +1,142 @@
-# Contributing to Discord Digest AI Message Summarizer
+# Contributing to DiscordDigest-AI-Summarizer-Browser-Extension
 
-We welcome contributions to the Discord Digest AI Message Summarizer! To ensure a high-velocity, zero-defect development process, please adhere to the following guidelines.
+We are thrilled you're considering contributing to **DiscordDigest-AI-Summarizer-Browser-Extension**! Your efforts help us build a more private, efficient, and intelligent Discord experience. As Apex Technical Authority, we uphold the highest standards for code quality, architectural integrity, and user experience. By contributing, you agree to abide by these principles.
 
-## 1. Code of Conduct
+## 🚀 Getting Started
 
-This project adheres to the Contributor Covenant Code of Conduct. Please review the full [Code of Conduct](CODE_OF_CONDUCT.md) to understand the expected standards of behavior.
+To ensure a smooth contribution process, please familiarize yourself with the following guidelines. We operate on a 'Zero-Defect, High-Velocity, Future-Proof' philosophy.
 
-## 2. Contribution Workflow
+### 📜 Code of Conduct
 
-1.  **Fork & Clone:** Fork this repository and clone your fork locally.
-    ```bash
-    git clone git@github.com:<your-username>/Discord-Digest-AI-Message-Summarizer.git
-    cd Discord-Digest-AI-Message-Summarizer
-    git remote add upstream https://github.com/Apex-AI-DevOps/Discord-Digest-AI-Message-Summarizer.git
-    git checkout -b my-feature-branch
-    ```
+We expect all contributors to adhere to our [Code of Conduct](https://github.com/chirag127/DiscordDigest-AI-Summarizer-Browser-Extension/blob/main/.github/CODE_OF_CONDUCT.md). Please read it carefully.
 
-2.  **Setup:** Ensure your development environment is set up according to the `README.md` instructions.
-    ```bash
-    # Example for TypeScript/Vite/WXT Stack:
+### 💡 How Can I Contribute?
+
+There are many ways you can contribute to DiscordDigest-AI-Summarizer-Browser-Extension:
+
+*   **Reporting Bugs:** If you find a bug, please open an issue using our [bug report template](https://github.com/chirag127/DiscordDigest-AI-Summarizer-Browser-Extension/blob/main/.github/ISSUE_TEMPLATE/bug_report.md).
+*   **Suggesting Enhancements:** Have an idea for a new feature or an improvement? Open an issue to discuss it.
+*   **Writing Code:** Implement new features, fix bugs, or improve existing code.
+*   **Improving Documentation:** Enhance our `README.md`, contributing guidelines, or other project documentation.
+
+## 🛠️ Development Setup
+
+DiscordDigest is a client-side browser extension built with cutting-edge web technologies.
+
+### Prerequisites
+
+Ensure you have the following installed on your system:
+
+*   [Node.js](https://nodejs.org/) (LTS version recommended)
+*   [npm](https://www.npmjs.com/) (Node Package Manager) or `uv` (our preferred package manager)
+
+### Installation
+
+1.  **Clone the Repository:**
+    bash
+    git clone https://github.com/chirag127/DiscordDigest-AI-Summarizer-Browser-Extension.git
+    cd DiscordDigest-AI-Summarizer-Browser-Extension
+    
+
+2.  **Install Dependencies:**
+    We recommend using `uv` for speed and efficiency, but `npm` also works.
+    bash
+    # Using uv (recommended)
+    uv pip install -r requirements.txt # If any Python backend or tools were present, though primarily JS/TS
+    uv requirements.txt # For JS/TS, uv install or npm install
+    uv install
+    
+    # Or using npm
     npm install
-    npm run dev # or relevant build/dev command
-    ```
+    
 
-3.  **Develop:** Implement your changes. Focus on modularity, clean code, and adherence to the specified architectural principles (SOLID, CQS, DRY, KISS).
+3.  **Environment Variables:**
+    Create a `.env` file in the root directory and add any necessary API keys, especially for Google Gemini AI integration (if client-side keys are used or proxies are involved in development).
+    ini
+    # Example: Google Gemini API Key (if applicable for direct client-side use or testing)
+    VITE_GEMINI_API_KEY=your_gemini_api_key_here
+    
 
-4.  **Test:** Write comprehensive tests for your changes. Ensure all existing tests pass and new tests cover success, failure, and edge cases.
-    ```bash
-    # Example for Vitest:
-    npm test
-    ```
+### Running the Development Server
 
-5.  **Lint & Format:** Automatically format and lint your code.
-    ```bash
-    # Example for Biome:
-    npm run lint -- --fix
-    ```
+This project uses Vite and WXT for rapid development.
 
-6.  **Commit:** Use [Conventional Commits](https://www.conventionalcommits.org/) for your commit messages. This ensures clear communication and aids in automated versioning and changelog generation.
-    ```bash
-    # Example:
-    git add .
-    git commit -m "feat: Add multi-language support for summaries"
-    ```
+bash
+# Start the development server (for a browser extension, this usually means watching files and building for a browser extension reload)
+npm run dev
 
-7.  **Push:** Push your branch to your fork.
-    ```bash
-    git push origin my-feature-branch
-    ```
 
-8.  **Pull Request:** Open a Pull Request (PR) against the `main` branch of the `Apex-AI-DevOps/Discord-Digest-AI-Message-Summarizer` repository.
-    *   **Title:** Use a concise, descriptive title (e.g., `feat: Implement User Settings for Summary Length`).
-    *   **Description:** Clearly explain the changes, the problem they solve, and any relevant context.
-    *   **Link Issues:** Reference any related GitHub Issues.
+Follow the instructions from `npm run dev` to load the unpacked extension into your browser (Chrome, Firefox, etc.).
 
-## 3. Branching Strategy
+### Building for Production
 
-*   **`main`:** Represents the latest stable release. Do not commit directly to `main`.
-*   **`develop`:** Integration branch for features. Most development happens here indirectly via PRs.
-*   **Feature Branches:** Prefix with `feat/`, `fix/`, `docs/`, `chore/` (e.g., `feat/ai-model-selection`).
+bash
+npm run build
 
-## 4. Technical Standards & Architecture
+This will generate the production-ready extension files in the `dist/` directory.
 
-*   **Language:** TypeScript 6.x
-*   **Build Tool:** Vite 7
-*   **Extension Framework:** WXT
-*   **State Management:** Signals
-*   **Linting/Formatting:** Biome
-*   **Testing:** Vitest (Unit), Playwright (E2E)
-*   **Architecture:** Feature-First (`features/` directory structure), SOLID, CQS, DRY, KISS principles are paramount.
-*   **AI Integration:** Leverage `gemini-3-pro-preview` or `gemini-2.5-pro` as primary, with the defined fallback cascade.
-*   **Security:** Adhere to DevSecOps protocols. Sanitize ALL inputs. Consider OWASP Top 10 2025.
-*   **Code Quality:** Self-documenting code is mandatory. Avoid comments unless explaining the 'why'.
+## 💻 Coding Guidelines
 
-## 5. Pull Request Guidelines
+We adhere to a strict set of coding standards to maintain consistency, performance, and maintainability.
 
-*   **Keep PRs Focused:** Each PR should address a single concern.
-*   **Self-Review:** Before submitting, review your own changes thoroughly.
-*   **CI/CD Checks:** Ensure all GitHub Actions (Lint, Test, Build) pass before requesting a review.
-*   **Respond to Feedback:** Address reviewer comments promptly and constructively.
+*   **Language:** TypeScript (Strict)
+*   **Frameworks:** React (UI), WXT (Extension Development), Vite (Build Tool)
+*   **AI Integration:** Google Gemini API (client-side focused)
+*   **Architecture:** Feature-Sliced Design (FSD) for clear separation of concerns, scalability, and modularity.
+*   **Linting & Formatting:** We use `Biome` for lightning-fast linting and formatting. Please ensure your code passes Biome checks.
+    bash
+    npm run lint
+    npm run format
+    
+*   **Testing:**
+    *   **Unit Tests:** Written with `Vitest` to cover individual components and utility functions.
+    *   **End-to-End (E2E) Tests:** Written with `Playwright` to simulate user interactions within the browser extension environment.
+    bash
+    # Run unit tests
+    npm run test:unit
+    # Run E2E tests (requires browser installation)
+    npm run test:e2e
+    # Run all tests
+    npm run test
+    
 
-## 6. Reporting Issues
+## 📝 Commit Messages
 
-Please use the provided issue templates in the `.github/ISSUE_TEMPLATE/` directory. Provide detailed information, steps to reproduce, and expected behavior. For security vulnerabilities, please follow the guidelines in `.github/SECURITY.md`.
+We follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) for clear and standardized commit history. This aids in automated changelog generation and understanding project evolution.
 
-## 7. License
+**Examples:**
 
-This project is licensed under the CC BY-NC license. By contributing, you agree that your contributions will also be licensed under this terms.
+*   `feat: add Discord message summarization`
+*   `fix(ui): resolve summary display overflow`
+*   `docs: update contributing guidelines`
+*   `chore(deps): upgrade wxt to latest version`
 
----
+## 📥 Pull Request Guidelines
+
+When submitting a Pull Request (PR), please keep the following in mind:
+
+1.  **Fork the Repository:** Start by forking `https://github.com/chirag127/DiscordDigest-AI-Summarizer-Browser-Extension`.
+2.  **Create a New Branch:** Base your work on the `main` branch and create a new, descriptively named branch (e.g., `feat/summarizer-button`, `fix/login-bug`).
+3.  **Atomic Commits:** Make small, focused commits that each address a single concern.
+4.  **Descriptive PR Title:** Use a clear and concise title that summarizes the changes.
+5.  **Detailed Description:** Provide a comprehensive description of your changes, including:
+    *   What problem does this PR solve?
+    *   How was it solved?
+    *   Any relevant design decisions or architectural considerations.
+    *   Screenshots or GIFs for UI changes.
+    *   References to related issues (e.g., `Closes #123`).
+6.  **Tests:** Ensure all existing tests pass and add new tests for your features or bug fixes. Code coverage should not decrease.
+7.  **Linting & Formatting:** Run `npm run lint` and `npm run format` to ensure your code adheres to our style guidelines.
+8.  **Review Process:** Your PR will be reviewed by maintainers. Please be responsive to feedback and make necessary adjustments.
+
+### Pull Request Template
+
+Please use our [Pull Request Template](https://github.com/chirag127/DiscordDigest-AI-Summarizer-Browser-Extension/blob/main/.github/PULL_REQUEST_TEMPLATE.md) when submitting your PR.
+
+## 🛡️ Security Vulnerabilities
+
+If you discover a security vulnerability, please report it responsibly following our [Security Policy](https://github.com/chirag127/DiscordDigest-AI-Summarizer-Browser-Extension/blob/main/.github/SECURITY.md).
+
+## ⚖️ License
+
+By contributing, you agree that your contributions will be licensed under the [CC BY-NC 4.0 License](https://github.com/chirag127/DiscordDigest-AI-Summarizer-Browser-Extension/blob/main/LICENSE).
